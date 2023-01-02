@@ -1,11 +1,6 @@
-cd restrain/output
-sbatch ../mdr_hand.sh
-cd ../..
-
-cd discharge/output
-sbatch ../mdr_hand.sh
-cd ../..
-
-cd vanish/output
-sbatch ../mdr_hand.sh
-cd ../..
+for stage in restrain discharge vanish;
+do 
+	pushd $stage/output;
+	sbatch ../mdr_hand.sh;
+	popd;
+done
