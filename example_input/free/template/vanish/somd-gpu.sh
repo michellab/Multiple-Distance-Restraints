@@ -6,7 +6,7 @@
 #SBATCH --time 24:00:00
 #SBATCH --array=0-17
 
-#module load cuda/9.2
+module load cuda
 
 echo "CUDA DEVICES:" $CUDA_VISIBLE_DEVICES
 
@@ -18,16 +18,14 @@ echo "lambda is: " $lam
 mkdir lambda-$lam
 cd lambda-$lam
 
-#export OPENMM_PLUGIN_DIR=/home/finlayclark/anaconda3/envs/biosimspace-dev/lib/plugins/
-
-srun /home/finlayclark/sire.app/bin/somd-freenrg -C ../../input/sim.cfg -l $lam -p CUDA
+srun somd-freenrg -C ../../input/sim.cfg -l $lam -p CUDA
 cd ..
 
 wait
 
-#if [ "$SLURM_ARRAY_TASK_ID" -eq "17" ]
-#then
-   # sleep 30 
-   # sbatch ../mbar.sh
-#fi
+if [ "$SLURM_ARRAY_TASK_ID" -eq "17" ]
+then
+    sleep 30 
+    sbatch ../mbar.sh
+fi
 

@@ -1,12 +1,7 @@
-cd discharge
-cd output
-sbatch ../somd-gpu.sh
-
-cd ..
-cd ..
-cd vanish
-cd output
-sbatch ../somd-gpu.sh
-cd ..
-cd ..
+for leg in discharge vanish;
+do
+	pushd $leg/output;
+	sbatch ../somd-gpu.sh;
+	popd;
+done
 
