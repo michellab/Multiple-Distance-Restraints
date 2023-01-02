@@ -6,8 +6,6 @@
 #SBATCH --time 24:00:00
 #SBATCH --array=0-35
 
-sleep $((30*SLURM_ARRAY_TASK_ID))
-
 module load cuda
 
 echo "CUDA DEVICES:" $CUDA_VISIBLE_DEVICES
@@ -21,16 +19,13 @@ mkdir lambda-$lam
 cd lambda-$lam
 
 export OMP_NUM_THREADS=1
-#export OPENMM_PLUGIN_DIR=/export/users/finlayclark/biosimspace.app/lib/plugins/
 
-srun /export/users/finlayclark/sire_permanent_boresch.app/bin/somd-freenrg -C ../../input/sim.cfg -l $lam -p CUDA
+srun somd-freenrg -C ../../input/sim.cfg -l $lam -p CUDA
 cd ..
 
 if [ "$SLURM_ARRAY_TASK_ID" -eq "35" ]
 then
   wait
-  sleep 30
-  sbatch ../ljcor.sh
   sleep 30
   sbatch ../mbar.sh
   sleep 30

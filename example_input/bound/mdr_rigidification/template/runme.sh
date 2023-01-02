@@ -1,23 +1,7 @@
-cd rigidify/output
-sbatch ../somd-gpu.sh
-cd ../..
+for stage in rigidify restrain unrigidify unrigidify_lig unrigidify_prot discharge vanish;
+do
+	pushd $stage/output;
+	sbatch ../somd-gpu.sh;
+	popd;
+done
 
-cd restrain/output
-sbatch ../somd-gpu.sh
-cd ../..
-
-cd unrigidify_lig/output
-sbatch ../somd-gpu.sh
-cd ../..
-
-cd unrigidify_prot/output
-sbatch ../somd-gpu.sh
-cd ../..
-
-cd discharge/output
-sbatch ../somd-gpu.sh
-cd ../..
-
-cd vanish/output
-sbatch ../somd-gpu.sh
-cd ../..
