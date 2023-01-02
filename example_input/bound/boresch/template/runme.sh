@@ -1,6 +1,6 @@
-for leg in restrain discharge vanish;
+for stage in restrain discharge vanish;
 do 
-	pushd $leg/output;
+	pushd $stage/output;
 	sbatch ../bor_935_somd-gpu.sh;
 	popd;
 done

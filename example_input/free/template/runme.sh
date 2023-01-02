@@ -1,6 +1,6 @@
-for leg in discharge vanish;
+for stage in discharge vanish;
 do
-	pushd $leg/output;
+	pushd $stage/output;
 	sbatch ../somd-gpu.sh;
 	popd;
 done
