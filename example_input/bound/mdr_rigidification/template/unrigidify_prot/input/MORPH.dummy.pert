@@ -1,0 +1,30 @@
+version 1
+ molecule WAT
+    atom
+            name O
+            initial_type    OW
+            final_type      OW
+                initial_charge -0.83400
+                 final_charge   -0.83400
+            initial_LJ      3.15075  0.15200
+            final_LJ        3.15075  0.15200
+    endatom
+    atom
+            name H1
+            initial_type    HW
+            final_type      HW
+                initial_charge  0.41700
+                 final_charge    0.41700
+            initial_LJ      0.00000  0.00000
+            final_LJ        0.00000  0.00000
+    endatom
+    atom
+            name H2
+            initial_type    HW
+            final_type      HW
+                initial_charge  0.41700
+                 final_charge    0.41700
+            initial_LJ      0.00000  0.00000
+            final_LJ        0.00000  0.00000
+    endatom
+end molecule
